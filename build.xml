@@ -12,6 +12,19 @@
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
     </path>
 
+    <target name="jar" depends="compile">
+    <mkdir dir="${dist.dir}"/>
+    <jar destfile="${dist.dir}/Alvarez_Cardenas_Antonio_Tarea4PSP.jar" basedir="${build.dir}">
+        <manifest>
+            <attribute name="Main-Class" value="servidor_main.Servidor"/>
+            <attribute name="Class-Path" value="lib/jbcrypt-0.4.jar"/>
+        </manifest>
+        <!-- Incluir las dependencias dentro del JAR -->
+        <zipfileset dir="${lib.dir}" includes="**/*.jar"/>
+    </jar>
+</target>
+
+
     <!-- Limpiar las carpetas de compilación y distribución -->
     <target name="clean">
         <delete dir="${build.dir}"/>
@@ -23,7 +36,7 @@
         <mkdir dir="${build.dir}"/>
         <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath" includeantruntime="false"/>
     </target>
-
+    
     <!-- Crear el archivo JAR final -->
     <target name="jar" depends="compile">
         <mkdir dir="${dist.dir}"/>
