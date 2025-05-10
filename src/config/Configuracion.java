@@ -40,7 +40,7 @@ public class Configuracion {
     private static final Logger LOGGER = Logger.getLogger(LOGGER_NOMBRE);
 
 // Parámetros de usuarios y datos
-    private static final String ARCHIVO_DE_DATOS_USUARIOS = "usuarios.txt";
+    private static final String ARCHIVO_DE_DATOS_USUARIOS = "tmp/usuarios.txt";
 
 // Parámetros de cifrado
     private static final String ALGORITMO = "AES";
