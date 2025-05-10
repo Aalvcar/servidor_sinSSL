@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 public class Configuracion {
 
 // Parámetros del servidor
-    private static final int PUERTO = Integer.parseInt(System.getenv("PORT"));;
+    private static final int PUERTO = Integer.parseInt(System.getenv("PORT"));
 
 // Parámetros del logger
     private static final String LOGGER_NOMBRE = "MiLog";
