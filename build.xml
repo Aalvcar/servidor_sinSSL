@@ -1,50 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Tarea4PSP" default="jar" basedir=".">
 
-    <!-- Definir las carpetas -->
+    <!-- Definimos las ubicaciones de los directorios -->
     <property name="src.dir" location="src"/>
     <property name="build.dir" location="build"/>
     <property name="dist.dir" location="dist"/>
     <property name="lib.dir" location="lib"/>
 
-    <!-- Incluir todos los JARs de la carpeta lib -->
+    <!-- Configuramos el classpath incluyendo todos los JARs de la carpeta lib -->
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
     </path>
 
-    <target name="jar" depends="compile">
-    <mkdir dir="${dist.dir}"/>
-    <jar destfile="${dist.dir}/Alvarez_Cardenas_Antonio_Tarea4PSP.jar" basedir="${build.dir}">
-        <manifest>
-            <attribute name="Main-Class" value="servidor_main.Servidor"/>
-            <attribute name="Class-Path" value="lib/jbcrypt-0.4.jar"/>
-        </manifest>
-        <!-- Incluir las dependencias dentro del JAR -->
-        <zipfileset dir="${lib.dir}" includes="**/*.jar"/>
-    </jar>
-</target>
-
-
-    <!-- Limpiar las carpetas de compilación y distribución -->
+    <!-- Limpieza de directorios de compilación y distribución -->
     <target name="clean">
         <delete dir="${build.dir}"/>
         <delete dir="${dist.dir}"/>
     </target>
 
-    <!-- Compilación del código fuente -->
+    <!-- Compilación de las clases fuente -->
     <target name="compile">
         <mkdir dir="${build.dir}"/>
         <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath" includeantruntime="false"/>
     </target>
-    
+
     <!-- Crear el archivo JAR final -->
     <target name="jar" depends="compile">
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/Alvarez_Cardenas_Antonio_Tarea4PSP.jar" basedir="${build.dir}">
             <manifest>
                 <attribute name="Main-Class" value="servidor_main.Servidor"/>
-                <attribute name="Class-Path" value="lib/jbcrypt-0.4.jar"/>
+                <attribute name="Class-Path" value="lib/jbcrypt-0.4.jar"/> <!-- Referencia a la librería -->
             </manifest>
+            <!-- Incluir todos los JARs desde la carpeta lib en el JAR final -->
+            <zipfileset dir="${lib.dir}" includes="**/*.jar"/>
         </jar>
     </target>
 
