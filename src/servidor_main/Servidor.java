@@ -232,15 +232,19 @@ public class Servidor extends Thread {
                                 String texto = Comprobaciones.comprobarDatos(user, pass);
 
                                 if (texto.equals("OK")) {
-                                    if (accion.equals("login")) {
-                                        if (Persistencia.loginUsuario(user, pass)) {
+                                  System.out.println("********comprobaciones ok");
 
+                                    if (accion.equals("login")) {
+                                           System.out.println("********hay logueo ok");
+
+                                        if (Persistencia.loginUsuario(user, pass)) {
+                                            System.out.println("********se ha logueado ok");
                                             // Si sesionID esta vacia (osea si es "" aun), o la key no existe o no coincide el token porque se haya cambiado, pues se hace una cookie nueva y se guarda
                                             if (sessionID.isEmpty() || !sesiones.containsKey(user) || !sesiones.get(user).equals(sessionID)) {
-                                                // System.out.println("Cookie modificada en el usuario: " + user);
+                                                System.out.println("Cookie modificada en el usuario: " + user);
                                                 sessionID = UUID.randomUUID().toString();    // Actualiza la cookie por si no tiene o por si está corrupta, para no seguir metiendo más.
                                                 sesiones.put(user, sessionID);       // Solo acepta un par:  1 usuario -> 1 cookie, si se cambia o modifica se borra y se guarda una nueva.      
-                                                //System.out.println("*********Creando cookie " + sessionID);
+                                                System.out.println("*********Creando cookie " + sessionID);
                                             }
                                             // Guardamos la cookie en sesiones
                                             html = PaginaIndex.getPagina();
