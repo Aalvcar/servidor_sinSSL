@@ -33,7 +33,7 @@
                 <attribute name="Class-Path" value="lib/jbcrypt-0.4.jar"/> <!-- Referencia a la librería -->
             </manifest>
             <!-- Incluir todos los JARs desde la carpeta lib en el JAR final -->
-            <zipfileset dir="${lib.dir}" includes="**/*.jar"/>
+            <zipfileset dir="${lib.dir}" includes="*.jar"/>
         </jar>
     </target>
 
