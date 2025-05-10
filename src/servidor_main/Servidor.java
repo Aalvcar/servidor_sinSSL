@@ -96,7 +96,7 @@ public class Servidor extends Thread {
             // Si el archivo de datos no existe, se crea y cifra. Si existe, estará ya cifrado
             File datos = new File(Configuracion.getRutaArchivoUsuarios());
             if (!datos.exists()) {
-                System.out.println("Creando y cifrando el archivo de datos...");
+                System.out.println("Creando y cifrando el archivo de datos..." +  Configuracion.getRutaArchivoUsuarios());
                 datos.createNewFile();
                 Cifradora.cifrarArchivo();
             }
